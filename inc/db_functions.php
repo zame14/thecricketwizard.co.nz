@@ -3,7 +3,7 @@
 require_once "conn.php";
 require_once "emails.php";
 
-function dbToArray($querystr,$db='cricket_wizard',$field_type='fieldname',$debug=0){
+function dbToArray($querystr,$db='me03hot13066com46198_cricket_wizard',$field_type='fieldname',$debug=0){
 	
 	$mysqli_db = dbi_connect($db); //Initialise the mysqli connection
 	$query_number=0;// This is to check the number of queries
@@ -57,7 +57,7 @@ function dbToArray($querystr,$db='cricket_wizard',$field_type='fieldname',$debug
 	else
 	{
 		//die("<BR><BR>Error Processing the Query= ".$querystr);		
-		emails("error","admin@thecricketwizard.co.nz",$_SESSION["userid"],$querystr,'','','');
+		//emails("error","admin@thecricketwizard.co.nz",$_SESSION["userid"],$querystr,'','','');
 		redirect_rel('error.php');
 		die();
 	}

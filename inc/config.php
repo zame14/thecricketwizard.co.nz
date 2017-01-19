@@ -17,13 +17,20 @@ $hostname = "localhost";
 $dbname = "cricket_wizard";
 
 define ('HOSTNAME', 'http://localhost/Cricket%20Wizard/');
-*/
+
 //LIVE
 $username = "wizard";
 $pword = "Kenz1e";
 $hostname = "mysql1.openhost.net.nz";
 $dbname = "cricket_wizard";
 $dbname2 = "cricket_wizard_sponsors";
+*/
+
+$username = "me03h_cricket_wi";
+$pword = "Hq5a4&d5";
+$hostname = "mysql7.openhost.net.nz";
+$dbname = "me03hot13066com46198_cricket_wizard";
+$dbname2 = "me03hot13066com46198_cricket_wizard_sponsors";
 
 define ('HOSTNAME', 'http://thecricketwizard.co.nz');
 define ('IMGFOLDER', 'sponsorship/images');

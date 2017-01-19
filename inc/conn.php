@@ -18,8 +18,8 @@ global $hostname, $username, $pword;
 function dbi_connect($dbname)
 {
 	global $hostname, $username, $pword;
-	if($dbname=='cricket_wizard_sponsors') { $username = 'wizard1'; } else { $username = 'wizard'; }
-	$mysqli_db = mysqli_connect($hostname, $username, $pword) or die("Unable to connect to mysqli");
+	if($dbname=='me03hot13066com46198_cricket_wizard_sponsors') { $username = 'me03h_sponsors'; } else { $username = 'me03h_cricket_wi'; }
+	$mysqli_db = mysqli_connect($hostname, $username, $pword) or die("Unable to connect to mysqli.");
 	$selected = mysqli_select_db($mysqli_db,$dbname)or die("Could not select db" . $dbname);
 	return $mysqli_db;
 }
