@@ -536,7 +536,7 @@ function batting($teamid,$opponenttext,$comptext,$seasontext,$criteria,$a,$pagen
 //$criteria1 = $criteria.' and bat.battingid >0';
 $cols = 14;
 $showExtra = false;
-if($teamid == 776) {
+if($teamid <> 1) {
     $cols = 16;
     $showExtra = true;
 }
@@ -677,7 +677,7 @@ switch ($a){
                     <td>BF</td>
                     <td>SR</td>
                 <?php } ?>
-				<td>Ave.</td>
+				<td>Ave</td>
 				<td>HS</td>
 				<td>100</td>
 				<td>50</td>

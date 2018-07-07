@@ -276,6 +276,16 @@ function validation($errormsg){ ?>
 
 function footer($val=0, $index=0){
 ?>
+<div class="donate-wrapper">
+    <p>The Cricket Wizard is a free online cricket management system, that has been storing statistics for over 1000 teams throughout the world since 2010.</p>
+    <p>Please support The Cricket Wizard by making a donation.</p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="NL2YAYX4XBHGS">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>
+</div>
 <table cellpadding="5" cellspacing="0" border="0" id="whitetext">
 	<tr>
 		<?php
@@ -289,7 +299,7 @@ function footer($val=0, $index=0){
 		<td align="center" style="font-size:12px; color:#F7C200;"><a href="http://www.axialis.com/free/icons" target="_blank" style="color:#F7C200; ">Icons</a> by <a href="http://www.axialis.com" target="_blank" style="color:#F7C200; ">Axialis Team</a></td>		
 	</tr>
 	<tr>
-		<td align="center" style="font-size:12px;" colspan="9" style="color:#CCCCCC; ">&copy;&nbsp;Copyright 2012 The Cricket Wizard</td>
+		<td align="center" style="font-size:12px;" colspan="9" style="color:#CCCCCC; ">&copy;&nbsp;Copyright <?=date('Y')?> The Cricket Wizard | Website by: <a href="http://www.azwebsolutions.co.nz" target="_blank">A-Z WEB SOLUTIONS LTD</a></td>
 	</tr>
 	<tr>
 	<?php }
@@ -309,7 +319,7 @@ function footer($val=0, $index=0){
 		<td align="center" style="font-size:12px; color:#FFFFFF;"><a href="http://www.axialis.com/free/icons" target="_blank" style="color:#FFFFFF; ">Icons</a> by <a href="http://www.axialis.com" target="_blank" style="color:#FFFFFF; ">Axialis Team</a></td>	
 	</tr>
 	<tr>
-		<td align="center" style="font-size:12px;" colspan="9" style="color:#FFFFFF; ">&copy;&nbsp;Copyright 2012 The Cricket Wizard</td>
+		<td align="center" style="font-size:12px;" colspan="9" style="color:#FFFFFF; ">&copy;&nbsp;Copyright <?=date('Y')?> The Cricket Wizard | Website by: <a href="http://www.azwebsolutions.co.nz" target="_blank">A-Z WEB SOLUTIONS LTD</a></td>
 	</tr>
 		<?php
 		} ?>		

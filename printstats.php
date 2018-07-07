@@ -35,7 +35,7 @@ $seasontext = "all seasons";
 $criteria = "WHERE m.teamid=".$_REQUEST["teamid"]."";
 $cols = 14;
 $showExtra = false;
-if($_REQUEST["teamid"] == 638 || $_REQUEST['teamid'] == 776) {
+if($_REQUEST["teamid"] <> 1) {
 	$cols = 16;
 	$showExtra = true;
 }
@@ -49,7 +49,7 @@ if((isset($_REQUEST['opponent']))&&$_REQUEST['opponent']<>""){
 		//check if season has been selected
 		$comptext = $_REQUEST['compid'];
 		if((isset($_REQUEST['season']))&&$_REQUEST['season']<>""){
-			//all three have been selected so set criteria			
+			//all three have been selected so set criteria
 			$season = '"'.str_replace("_"," ",$_REQUEST['season']).'"';
 			$seasontext = $_REQUEST['season']." season";
 			$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND opponent=".$opponent." AND m.compid=".$_REQUEST['compid']." AND season=".$season."";
@@ -62,11 +62,11 @@ if((isset($_REQUEST['opponent']))&&$_REQUEST['opponent']<>""){
 	else if((isset($_REQUEST['season']))&&$_REQUEST['season']<>""){
 		//comp not select but opponent and season have been
 			$season = '"'.str_replace("_"," ",$_REQUEST['season']).'"';
-			$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND opponent=".$opponent." AND season=".$season."";			
+			$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND opponent=".$opponent." AND season=".$season."";
 	}
 	else {
 		//just opponent has been selected
-		$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND opponent=".$opponent."";	
+		$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND opponent=".$opponent."";
 	}
 }
 //Opponent not selected but check comp and season
@@ -81,15 +81,15 @@ else if(isset($_REQUEST['compid'])&&$_REQUEST['compid']<>""){
 	else {
 		//just comp been selected
 		$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND m.compid=".$_REQUEST['compid']."";
-	}		
+	}
 }
 //just season has been selected
 else if(isset($_REQUEST['season'])&&$_REQUEST['season']<>""){
 		$season = '"'.str_replace("_"," ",$_REQUEST['season']).'"';
 		$seasontext = $_REQUEST['season']." season";
 		$criteria = "WHERE m.teamid=".$_REQUEST["teamid"]." AND season=".$season."";
-}		
-if($comptext<>"all competitions"){ 
+}
+if($comptext<>"all competitions"){
 	$rs = dbToArray("call getComps('where compid=".$comptext."')");
 	$comptext = $rs[1]['competition'];
 }
@@ -111,7 +111,7 @@ if($comptext<>"all competitions"){
 		else {
 			$stats = dbToArray("call getStatsTeam('".$criteria."','group by p.playerid','order by sum(wickets) desc','');");
 			echo "Bowling Statistics for ".$stats[1]['teamname'];
-		} 
+		}
 		?>
 		</td>
 	</tr>
@@ -122,7 +122,7 @@ if($comptext<>"all competitions"){
 				<td colspan="<?php echo $cols; ?>" style="font-size:18px;"><strong><?php echo "vs ".$opponenttext.", ".$comptext.", ".$seasontext; ?></strong></td>
 			</tr>
 			<?php
-			if($_REQUEST["id"]=="batting"){ 
+			if($_REQUEST["id"]=="batting"){
 			?>
 			<tr>
 				<td colspan="2">&nbsp;</td>
@@ -145,8 +145,8 @@ if($comptext<>"all competitions"){
 				<td>St</td>
 			</tr>
 			<?php
-			for($i=1;$i<=count($stats);$i++){	
-				if($stats[$i]['innings']>0){ 
+			for($i=1;$i<=count($stats);$i++){
+				if($stats[$i]['innings']>0){
 					if($i % 2) { $color="#CCCCCC"; } else { $color="#FFFFFF"; }
 				?>
 				<tr>
@@ -159,18 +159,17 @@ if($comptext<>"all competitions"){
 					<?php
 					if($showExtra) { ?>
 					<td bgcolor="<?php echo $color; ?>"><?php echo ($stats[$i]['ballsfaced']<>"-") ? $stats[$i]['ballsfaced'] : "&nbsp;"; ?></td>
-					<td bgcolor="<?php echo $color; ?>"><?php echo ($stats[$i]['ballsfaced']<>"-") ? round(($stats[$i]['runs']/$stats[$i]['ballsfaced'])*100,2) : "&nbsp;"; ?></td></td>
-					<? } ?>
-					<td bgcolor="<?php echo $color; ?>">					
-					<?php 
+					<td bgcolor="<?php echo $color; ?>"><?php echo ($stats[$i]['ballsfaced']<>"-") ? round(($stats[$i]['runs']/$stats[$i]['ballsfaced'])*100,2) : "&nbsp;"; ?></td>
+					<?php } ?>
+					<td bgcolor="<?php echo $color; ?>">
+					<?php
 					if($stats[$i]['innings']==$stats[$i]['notouts']){
 						echo"-";
 					}
 					else {
-						echo round($stats[$i]['bataverage'],2); 
+						echo round($stats[$i]['bataverage'],2);
 					}
 					?>
-					</td>
 					</td>
 					<?php
 					$hs = dbToArray("call highestIndividualScore('".$criteria." AND p.playerid = ".$stats[$i]['playerid']."','order by runs desc, did desc');");
@@ -190,9 +189,9 @@ if($comptext<>"all competitions"){
 					<td bgcolor="<?php echo $color; ?>"><?php echo $stats[$i]['stumpings']; ?></td>
 				</tr>
 			<?php }
-			} 
+			}
 		}
-		else { ?>				
+		else { ?>
 		<tr>
 			<td colspan="2">&nbsp;</td>
 			<td>M</td>
@@ -207,8 +206,8 @@ if($comptext<>"all competitions"){
 			<td>10</td>
 		</tr>
 			<?php
-			for($i=1;$i<=count($stats);$i++){	
-				if($stats[$i]['deliveries']>0){ 
+			for($i=1;$i<=count($stats);$i++){
+				if($stats[$i]['deliveries']>0){
 					if($i % 2) { $color="#CCCCCC"; } else { $color="#FFFFFF"; }
 				?>
 				<tr>
@@ -226,7 +225,7 @@ if($comptext<>"all competitions"){
 					<td bgcolor="<?php echo $color; ?>"><?php echo $stats[$i]['tenwickets']; ?></td>
 				</tr>
 			<?php }
-			} 
+			}
 		} ?>
 		</table>
 		</td>

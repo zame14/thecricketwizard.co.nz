@@ -530,6 +530,13 @@ function batting($teamid,$opponenttext,$comptext,$seasontext,$criteria,$pagenav)
 $sql = "call getStatsTeam('".$criteria."','group by p.playerid','order by sum(runs) desc','');";
 $result = dbToArray($sql);
 $count = count($result);
+$cols = 14;
+$showExtra = false;
+//if($teamid == 776 || $teamid == 945 || $teamid == 950 || $teamid == 966) {
+if($teamid <> 1) {
+    $cols = 16;
+    $showExtra = true;
+}
 ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	<?php
@@ -544,7 +551,7 @@ $count = count($result);
 		<td>
 		<table cellpadding="5" cellspacing="0" border="1" width="100%" id="stats">
 			<tr>
-				<td colspan="14"><strong><?php echo "vs ".$opponenttext.", ".$comptext.", ".$seasontext; ?></strong></td>
+				<td colspan="<?php echo $cols; ?>"><strong><?php echo "vs ".$opponenttext.", ".$comptext.", ".$seasontext; ?></strong></td>
 			</tr>
 			<tr>
 				<td colspan="2">&nbsp;</td>
@@ -552,6 +559,11 @@ $count = count($result);
 				<td>I</td>
 				<td>NO</td>
 				<td>Runs</td>
+                <?php
+                if($showExtra) { ?>
+                    <td>BF</td>
+                    <td>SR</td>
+                <?php } ?>
 				<td>Ave</td>
 				<td>HS</td>
 				<td>100</td>
@@ -572,6 +584,11 @@ $count = count($result);
 					<td title="Innings"><?php echo $result[$i]['innings']; ?></td>
 					<td title="Not outs"><?php echo $result[$i]['notouts']; ?></td>
 					<td title="Runs"><?php echo $result[$i]['runs']; ?></td>
+                    <?php
+                    if($showExtra) { ?>
+                        <td title="Balls Faced"><?php echo ($result1[$i]['ballsfaced']<>"-") ? $result1[$i]['ballsfaced'] : "&nbsp;"; ?></td>
+                        <td title="Strike Rate"><?php echo ($result1[$i]['ballsfaced']<>"-") ? round(($result1[$i]['runs']/$result1[$i]['ballsfaced'])*100,2) : "&nbsp;"; ?></td>
+                    <?php } ?>
 					<td title="Batting average">
 					<?php 
 					if($result[$i]['innings']==$result[$i]['notouts']){

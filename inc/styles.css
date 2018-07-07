@@ -519,3 +519,18 @@ width: 15px;
 background: #5E828C url(basebarcaps_verticalbarbody.png) -45px -15px;
 }
 
+.donate-wrapper {
+	padding-left: 60px;
+	padding-right: 60px;
+	border-top: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	margin-bottom: 20px;
+	background-color: #212121;
+}
+.donate-wrapper p {
+	color:#FFFFFF;
+	font-family: Calibri, Tahoma, sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+}
+
