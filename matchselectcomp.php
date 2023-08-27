@@ -67,7 +67,7 @@ if(isset($_REQUEST['compaction'])){
 					$compid = 0;
 					$sql="call insertComp(".$compid.", '".addslashes($_REQUEST['newcomp'])."',".$user->teamid.",".$_REQUEST['mtid'].");";
 					$result =dbToArray($sql);
-					$_SESSION['m']['compid'] = $result[1]['competitionid'];			
+					$_SESSION['m']['compid'] = $result[1][1]['competitionid'];
 				}
 				else {
 					$error=1;

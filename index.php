@@ -49,6 +49,7 @@ if(!isset($_REQUEST['view'])){
 if(isset($_REQUEST['action'])){
 	if($_REQUEST['action']=="login"){
 		$login = validateUserLogon($_REQUEST['usernameIn'], $_REQUEST['adminpasswordIn'], session_id());
+		echo $login->message;
 		if($login->message=='Login successful'){
 			$_SESSION['userid'] = $login->userid;
 			$_SESSION['sessionid']=session_id();
@@ -440,10 +441,11 @@ function validateUserLogon($logonname, $password, $sessionid)
 	$sql = "call validateUserLogon('".addslashes($logonname)."','".$password."','".$sessionid."');";
 	$result = dbToArray($sql);
 	//print_r($result);
-	$login->message = $result[1]['message'];
+	//print_r($result[1][1]['status']);
+	$login->message = $result[1][1]['message'];
 	if($login->message == 'Login successful')
 	{
-		$login->userid = $result[1]['userid'];
+		$login->userid = $result[1][1]['userid'];
 	}
 	return $login;
 }
@@ -534,7 +536,8 @@ function info(){ ?>
 		one season, one competition, one opposition, or a combination of all seasons, all competitions, and all opposition.<br><br>
 		The Cricket Wizard has many more <a href="index.php?view=features">features</a> making it a must for all cricket teams.<br>
 		Create a permanent online resource for your cricket team by registering now.<br><br>
-		<input type="button" value="Register!" onClick="javascript:document.location='index.php?id=register';" style="color:#FFFFFF; background-color:#C80101; cursor:pointer; font-weight:bold; height:40px;"><br><br>
+        SORRY THE CRICKET WIZARD IS NOT TAKING ANYMORE REGISTRATIONS. NEW AND IMPROVED CRICKET WIZARD COMING SOON FOR NEW REGISTRATIONS.
+		<!--<input type="button" value="Register!" onClick="javascript:document.location='index.php?id=register';" style="color:#FFFFFF; background-color:#C80101; cursor:pointer; font-weight:bold; height:40px;"><br><br>
 		<!--To view the complete list of features, click <a href="#" onClick="View('features');">here</a>.<br><br> -->
 		</td>
 	</tr>
@@ -631,6 +634,7 @@ function options(){
 		Click <a href="home_guestmode.php">here</a> to enter the site in Guest mode to view batting, bowling, and fielding statistics.  No username or password is required. 
 		</td>
 	</tr>
+    <!--
 	<tr>
 		<td rowspan="2" valign="top" style="padding-right:5px; padding-left:5px; "><img src="images/Thumb Up.png"></td>
 		<td width="90%" style="font-size:20px; padding-bottom:5px;" valign="top" id="goldtext"><a href="sponsorship/advertising.php" target="_blank" id="goldtext">Advertise Online</a></td>
@@ -649,6 +653,7 @@ function options(){
 		Click <a href="downloads.php" target="_blank">here</a> to view the latest downloads from The Cricket Wizard.
 		</td>
 	</tr>
+	-->
 </table>	
 <?php
 }

@@ -83,7 +83,7 @@ if(isset($_REQUEST['action'])){
 			$sql="call insertUpdateUser(".$newuserid.",'".addslashes($_REQUEST['firstname'])."','".addslashes($_REQUEST['lastname'])."','','".$password[1]['teampassword']."',".$roleid.",'".$logonname."','".$uin."');";
 			$result =dbToArray($sql);
 			
-			$sql2="call insertPlayerTeam(".$result[1]['userid'].",".$user->teamid.");";
+			$sql2="call insertPlayerTeam(".$result[1][1]['userid'].",".$user->teamid.");";
 			$result2 =dbToArray($sql2);
 			//send email to Team Admin with login details for all the new players added.
 			$player = dbToArray("call getPlayers('where uin=\"".$uin."\"','','');");

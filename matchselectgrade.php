@@ -57,7 +57,7 @@ if(isset($_REQUEST['gradeaction'])){
 					$gradeid = 0;
 					$sql="call insertGrade(".$gradeid.", '".addslashes($_REQUEST['newgrade'])."',".$user->teamid.");";
 					$result =dbToArray($sql);
-					$_SESSION['m']['gradeid'] = $result[1]['gradeid'];
+					$_SESSION['m']['gradeid'] = $result[1][1]['gradeid'];
 				}
 				else {
 					$error=1;

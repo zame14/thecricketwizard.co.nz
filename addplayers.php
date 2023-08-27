@@ -55,7 +55,7 @@ if(isset($_REQUEST['action'])){
 					$sql="call insertUpdateUser(".$newuserid.",'".addslashes($_REQUEST['firstname'.$i])."','".addslashes($_REQUEST['lastname'.$i])."','','".$tpassword[1]['teampassword']."',".$roleid.",'".$logonname."','".$uin."');";
 					$result =dbToArray($sql);
 						
-					$sql2="call insertPlayerTeam(".$result[1]['userid'].",".$user->teamid.");";
+					$sql2="call insertPlayerTeam(".$result[1][1]['userid'].",".$user->teamid.");";
 					$result2 =dbToArray($sql2);			
 					
 					$send=1;

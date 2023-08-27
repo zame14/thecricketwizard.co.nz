@@ -56,9 +56,9 @@ function dbToArray($querystr,$db='me03hot13066com46198_cricket_wizard',$field_ty
 	}
 	else
 	{
-		//die("<BR><BR>Error Processing the Query= ".$querystr);		
-		//emails("error","admin@thecricketwizard.co.nz",$_SESSION["userid"],$querystr,'','','');
-		redirect_rel('error.php');
+		die("<BR><BR>Error Processing the Query= ".$querystr);
+		//emails("error","aaron.zame@gmail.com",$_SESSION["userid"],$querystr,'','','');
+		//redirect_rel('error.php');
 		die();
 	}
 }

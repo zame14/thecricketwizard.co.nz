@@ -278,13 +278,7 @@ function footer($val=0, $index=0){
 ?>
 <div class="donate-wrapper">
     <p>The Cricket Wizard is a free online cricket management system, that has been storing statistics for over 1000 teams throughout the world since 2010.</p>
-    <p>Please support The Cricket Wizard by making a donation.</p>
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="NL2YAYX4XBHGS">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
+    <p>Please support The Cricket Wizard by <a href="https://www.azwebsolutions.co.nz/the-cricket-wizard/" target="_blank" style="color: #F7C200;">making a donation.</a></p>
 </div>
 <table cellpadding="5" cellspacing="0" border="0" id="whitetext">
 	<tr>
@@ -392,7 +386,7 @@ function ad($size,$single,$promo=0)
 			$i = rand(1,count($ad)); 
 			?>
 				<tr>
-					<td><?php echo "<a href='sponsorship/hits.php?id=".$ad[$i]['id']."' target='_blank'><img src=".IMGFOLDER."/".$ad[$i]['logo']." style=border-color:#CCCCCC; alt=".$ad[$i]['sponsor']."></img></a>"; ?></td>
+					<td><?php echo "<img src=".IMGFOLDER."/".$ad[$i]['logo']." style=border-color:#CCCCCC; alt=".$ad[$i]['sponsor']."></img>"; ?></td>
 				</tr>
 			<?php			
 			}

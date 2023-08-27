@@ -250,7 +250,7 @@ if($error==1 || $errornum==1 || $erroremail==1){?>
 		else {
 			($_REQUEST["playingroleid"]>0) ? $playingroleid = $_REQUEST["playingroleid"] : $playingroleid =0;
 		}
-		$playingrole = dbToArray("call getPlayingRoles('WHERE playingroleid<>".$playingroleid."');"); ?>
+		$playingrole = dbToArray("call getPlayingRoles();"); ?>
 		<td style="padding-left:10px; padding-bottom:10px; padding-top:10px;">Playing role</td>
 		<td><?php 
 		if($result[1]['playingrole']<>""){
@@ -269,7 +269,7 @@ if($error==1 || $errornum==1 || $erroremail==1){?>
 		else {
 			($_REQUEST["batstyleid"]>0) ? $batstyleid = $_REQUEST["batstyleid"] : $batstyleid =0;
 		}
-		$batstyle = dbToArray("call getBattingStyles('WHERE batstyleid<>".$batstyleid."');"); ?>
+		$batstyle = dbToArray("call getBattingStyles();"); ?>
 		<td style="padding-left:10px; padding-bottom:10px; padding-top:10px;">Batting style</td>
 		<td><?php 
 		if($result[1]['batstyle']<>""){
@@ -288,7 +288,7 @@ if($error==1 || $errornum==1 || $erroremail==1){?>
 		else {
 			($_REQUEST["bowlstyleid"]>0) ? $bowlstyleid = $_REQUEST["bowlstyleid"] : $bowlstyleid =0;
 		}
-		$bowlstyle = dbToArray("call getBowlingStyles('WHERE bowlstyleid<>".$bowlstyleid."');"); ?>
+		$bowlstyle = dbToArray("call getBowlingStyles();"); ?>
 		<td style="padding-left:10px; padding-bottom:10px; padding-top:10px;">Bowling style</td>
 		<td><?php 
 		if($result[1]['bowlstyle']<>""){

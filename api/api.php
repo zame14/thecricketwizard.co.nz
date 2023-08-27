@@ -79,7 +79,10 @@ function getAllStats($playerid, $season, $comp, $opponent, $runs, $wickets, $gro
     if($season <> "") $sql .= ' AND m.season = "' . $season . '"';
     if($comp <> "") $sql .= ' AND ' . $comp;
     if($opponent <> "") $sql .= ' AND opponent = "' . $opponent . '"';
-    if($runs <> "") $sql .= ' AND ' . $runs;
+    if($runs <> "") {
+        $runs = str_replace("_", " ", $runs);
+        $sql .= ' AND ' . $runs;
+    }
     if($wickets <> "") $sql .= ' AND ' . $wickets;
 
     if($groupby <> "") $sql .= ' GROUP BY ' . $groupby;
@@ -102,7 +105,7 @@ function getAllStats($playerid, $season, $comp, $opponent, $runs, $wickets, $gro
         $data['opponent'][] = $row['opponent'];
         $data['catches'][] = $row['catches'];
         $data['dismissal'][] = $row['did'];
-        $data['fullname'][] = $row['fullname'];
+        $data['fullname'][] = stripslashes($row['fullname']);
         $data['innings'][] = $row['innings'];
         $data['bataverage'][] = $row['bataverage'];
         $data['hs'][] = $row['hs'];
@@ -120,6 +123,9 @@ function getAllStats($playerid, $season, $comp, $opponent, $runs, $wickets, $gro
         $data['tenwickets'][] = $row['tenwickets'];
         $data['runsconceded'][] = $row['runsconceded'];
         $data['dismissals'][] = $row['dismissals'];
+        $data['competition'][] = $row['competition'];
+        $data['compid'][] = $row['compid'];
+        $data['did'][] = $row['did'];
     }
     return $data;
 }

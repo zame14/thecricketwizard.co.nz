@@ -117,7 +117,7 @@ Insert Match
 $sql1 = "call insertUpdateMatch(".$matchid.",'".$_SESSION['m']['teamid']."', '".addslashes($_SESSION['m']['opponent'])."', '".$_SESSION['m']['compid']."', '".addslashes($_SESSION['m']['venue'])."',
 							'".$_SESSION['m']['gradeid']."', '".$dbdate."', '".$_SESSION['m']['resultid']."', '".addslashes($_SESSION['m']['summary'])."', '".addslashes($_SESSION['m']['season'])."');"; 
 $result1 =dbToArray($sql1);
-$matchid = $result1[1]['matchid'];
+$matchid = $result1[1][1]['matchid'];
 $count = count($result);
 
 for($i=1; $i<=$count; $i++){
@@ -132,10 +132,10 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['sixes'.$i]=='' ) ? $_SESSION['m']['sixes'.$i]='10101' : $_SESSION['m']['sixes'.$i];
 			$sqlbat = "call insertUpdateBatting(".$battingid.",".$_SESSION['m']['runs'.$i].",".$_SESSION['m']['balls'.$i].",'".$_SESSION['m']['dismissal'.$i]."',".$_SESSION['m']['fours'.$i].",".$_SESSION['m']['sixes'.$i].",".$batorder.");";
 			$resultbat =dbToArray($sqlbat);
-			$battingid = $resultbat[1]['battingid'];
+			$battingid = $resultbat[1][1]['battingid'];
 			if($_SESSION['m']["runs".$i] >=100){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",'".$_SESSION['m']["runs".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal'.$i].",".$battingid.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",'".$_SESSION['m']["runs".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal'.$i].",".$battingid.");";
 				$resulth =dbToArray($sqlh);
 			}
 		}
@@ -152,10 +152,10 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['noballs'.$i]=='' ) ? $_SESSION['m']['noballs'.$i]='10101' : $_SESSION['m']['noballs'.$i];
 			$sqlbowl = "call insertUpdateBowling(".$bowlingid.",".$_SESSION['m']['maidens'.$i].",".$_SESSION['m']['runsconceded'.$i].",".$_SESSION['m']['wickets'.$i].",".$_SESSION['m']['wides'.$i].",".$_SESSION['m']['noballs'.$i].",".$_SESSION['m']['overs'.$i].",".$bowlorder.");";
 			$resultbowl =dbToArray($sqlbowl);
-			$bowlingid = $resultbowl[1]['bowlingid'];			
+			$bowlingid = $resultbowl[1][1]['bowlingid'];
 			if($_SESSION['m']["wickets".$i] >=6){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",0,".$_SESSION['m']["wickets".$i].",".$_SESSION['m']["runsconceded".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",0,".$_SESSION['m']["wickets".$i].",".$_SESSION['m']["runsconceded".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid.");";
 				$resulth =dbToArray($sqlh);
 			}
 		}
@@ -170,7 +170,7 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['byes'.$i]=='' ) ? $_SESSION['m']['byes'.$i]='0' : $_SESSION['m']['byes'.$i];
 			$sqlf =  "call insertUpdateFielding(".$fieldingid.",".$_SESSION['m']['catches'.$i].",".$_SESSION['m']['stumpings'.$i].",".$_SESSION['m']["byes".$i].");";
 			$resultf =dbToArray($sqlf);
-			$fieldingid = $resultf[1]['fieldingid'];					
+			$fieldingid = $resultf[1][1]['fieldingid'];
 		}
 		else{
 			$fieldingid = 0;
@@ -196,10 +196,10 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['sixes'.$i]=='' ) ? $_SESSION['m']['sixes'.$i]='10101' : $_SESSION['m']['sixes'.$i];
 			$sqlbat = "call insertUpdateBatting(".$battingid.",".$_SESSION['m']['runs'.$i].",".$_SESSION['m']['balls'.$i].",'".$_SESSION['m']['dismissal'.$i]."',".$_SESSION['m']['fours'.$i].",".$_SESSION['m']['sixes'.$i].",".$batorder.");";
 			$resultbat =dbToArray($sqlbat);
-			$battingid = $resultbat[1]['battingid'];
+			$battingid = $resultbat[1][1]['battingid'];
 			if($_SESSION['m']["runs".$i] >=100){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",'".$_SESSION['m']["runs".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal'.$i].",".$battingid.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",'".$_SESSION['m']["runs".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal'.$i].",".$battingid.");";
 				$resulth =dbToArray($sqlh);
 			}
 		}
@@ -215,10 +215,10 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['sixes2'.$i]=='' ) ? $_SESSION['m']['sixes2'.$i]='10101' : $_SESSION['m']['sixes2'.$i];
 			$sqlbat = "call insertUpdateBatting(".$battingid2.",".$_SESSION['m']['runs2'.$i].",".$_SESSION['m']['balls2'.$i].",'".$_SESSION['m']['dismissal2'.$i]."',".$_SESSION['m']['fours2'.$i].",".$_SESSION['m']['sixes2'.$i].",".$batorder2.");";
 			$resultbat =dbToArray($sqlbat);
-			$battingid2 = $resultbat[1]['battingid'];
+			$battingid2 = $resultbat[1][1]['battingid'];
 			if($_SESSION['m']["runs2".$i] >=100){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",'".$_SESSION['m']["runs2".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal2'.$i].",".$battingid2.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",'".$_SESSION['m']["runs2".$i]."',0,0,".$_SESSION['m']['teamid'].",".$_SESSION['m']['dismissal2'.$i].",".$battingid2.");";
 				$resulth =dbToArray($sqlh);
 			}
 		}
@@ -235,11 +235,11 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['noballs'.$i]=='' ) ? $_SESSION['m']['noballs'.$i]='10101' : $_SESSION['m']['noballs'.$i];
 			$sqlbowl = "call insertUpdateBowling(".$bowlingid.",".$_SESSION['m']['maidens'.$i].",".$_SESSION['m']['runsconceded'.$i].",".$_SESSION['m']['wickets'.$i].",".$_SESSION['m']['wides'.$i].",".$_SESSION['m']['noballs'.$i].",".$_SESSION['m']['overs'.$i].",".$bowlorder.");";
 			$resultbowl =dbToArray($sqlbowl);
-			$bowlingid = $resultbowl[1]['bowlingid'];	
+			$bowlingid = $resultbowl[1][1]['bowlingid'];
 			$bowlorder = $bowlorder +1;
 			if($_SESSION['m']["wickets".$i] >=6){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",0,".$_SESSION['m']["wickets".$i].",".$_SESSION['m']["runsconceded".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",0,".$_SESSION['m']["wickets".$i].",".$_SESSION['m']["runsconceded".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid.");";
 				$resulth =dbToArray($sqlh);
 			}		
 		}
@@ -256,10 +256,10 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['noballs2'.$i]=='' ) ? $_SESSION['m']['noballs2'.$i]='10101' : $_SESSION['m']['noballs2'.$i];
 			$sqlbowl = "call insertUpdateBowling(".$bowlingid2.",".$_SESSION['m']['maidens2'.$i].",".$_SESSION['m']['runsconceded2'.$i].",".$_SESSION['m']['wickets2'.$i].",".$_SESSION['m']['wides2'.$i].",".$_SESSION['m']['noballs2'.$i].",".$_SESSION['m']['overs2'.$i].",".$bowlorder2.");";
 			$resultbowl =dbToArray($sqlbowl);
-			$bowlingid2 = $resultbowl[1]['bowlingid'];			
+			$bowlingid2 = $resultbowl[1][1]['bowlingid'];
 			if($_SESSION['m']["wickets2".$i] >=6){
 				//insert to honours
-				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1]['matchid'].",0,".$_SESSION['m']["wickets2".$i].",".$_SESSION['m']["runsconceded2".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid2.");";
+				$sqlh = "call insertHonoursPerformance(".$_SESSION['m']['playerid'.$i].",".$result1[1][1]['matchid'].",0,".$_SESSION['m']["wickets2".$i].",".$_SESSION['m']["runsconceded2".$i].",".$_SESSION['m']['teamid'].",0,".$bowlingid2.");";
 				$resulth =dbToArray($sqlh);
 			}
 		}
@@ -274,7 +274,7 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['byes'.$i]=='' ) ? $_SESSION['m']['byes'.$i]='0' : $_SESSION['m']['byes'.$i];
 			$sqlf =  "call insertUpdateFielding(".$fieldingid.",".$_SESSION['m']['catches'.$i].",".$_SESSION['m']['stumpings'.$i].",".$_SESSION['m']["byes".$i].");";
 			$resultf =dbToArray($sqlf);
-			$fieldingid = $resultf[1]['fieldingid'];					
+			$fieldingid = $resultf[1][1]['fieldingid'];
 		}
 		else{
 			$fieldingid = 0;
@@ -287,7 +287,7 @@ for($i=1; $i<=$count; $i++){
 			($_SESSION['m']['byes2'.$i]=='' ) ? $_SESSION['m']['byes2'.$i]='0' : $_SESSION['m']['byes2'.$i];
 			$sqlf =  "call insertUpdateFielding(".$fieldingid2.",".$_SESSION['m']['catches2'.$i].",".$_SESSION['m']['stumpings2'.$i].",".$_SESSION['m']["byes2".$i].");";
 			$resultf =dbToArray($sqlf);
-			$fieldingid2 = $resultf[1]['fieldingid'];					
+			$fieldingid2 = $resultf[1][1]['fieldingid'];
 		}
 		else{
 			$fieldingid2 = 0;

@@ -44,7 +44,7 @@ if(isset($_REQUEST['cont_2'])){
 }
 $error=0;
 $dateerror=0;
-
+//print_r($_SESSION);
 /***********
 Processing
 ***********/

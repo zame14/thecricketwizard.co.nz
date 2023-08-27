@@ -9,7 +9,8 @@ function db_connect() {
     if(!isset($connection)) {
         // Load configuration as an array. Use the actual location of your configuration file
         //$config = parse_ini_file('config.ini');
-        $connection = mysqli_connect('mysql7.openhost.net.nz','me03h_cricket_wi','Hq5a4&d5','me03hot13066com46198_cricket_wizard');
+        //$connection = mysqli_connect('mysql7.openhost.net.nz','me03h_cricket_wi','Hq5a4&d5','me03hot13066com46198_cricket_wizard');
+        $connection = mysqli_connect('localhost:3306','me03h_cricket_wi','Hq5a4&d5','me03hot13066com46198_cricket_wizard');
     }
 
     // If connection was not successful, handle the error
